@@ -1,0 +1,30 @@
+<math_expression> ::= <mult/div_expression> <sum/substract_list>
+
+<sum/substract_list> ::= + <mult/div_expression> <sum/substract_list> 
+                       | - <mult/div_expression> <sum/substract_list>
+                       | ε
+
+<mult/div_expression> ::= <unary_expression> <mult/div_list>
+
+<mult/div_list> ::= * <unary_expression> <mult/div_list>
+                  | / <unary_expression> <mult/div_list>
+                  | ε
+
+<unary_expression> ::= + <unary_expression>
+                     | - <unary_expression>
+                     | <pow_expression>
+
+
+<pow_expression> ::= <par/function_expression> <pow_list>
+
+<pow_list> ::= ^ <unary_expression> <pow_list>
+             | ε
+
+<par/function_expression> ::=   <trigonometric_function> ( <math_expression> )
+                            |   ( <math_expression> )
+                            |   IDENTIFIER.val            // value has to be entered by the user
+                            |   NUMBER         // it can be FLOAT or DOUBLE or INT
+
+<trigonometric_function> ::= COS | SIN | TAN | SEN      // SEN is also on the list because this project was designed to read mathematical expressions entered
+                                                        // in Spanish or English
+
